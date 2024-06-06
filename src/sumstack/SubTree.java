@@ -76,29 +76,26 @@ public class SubTree implements MySet {
     }*/
 
     public void sumElements() {
-        int sum;
-        SubTree node = getPeak();
-        Stack<SubTree> stack = new Stack<>();
-        stack.push(node);
-        while (node != null) {
-            if (node.getLeft() != null) {
-                node = node.getLeft();
-                System.out.println(node) ;
-                stack.push(node);
-            } else if (stack.pop().getRight() == null) {
-                node = node.getRight();
-                System.out.println(node);
-            } else if() {
-                break;
-            }
-            //node = node.getRight();
-        }
-        while (!stack.isEmpty()) {
-            System.out.println(stack.pop());
-        }
-    }
+        Stack<SubTree> stack = new Stack();
+        SubTree element = getPeak();
+        int sum = 0;
+        stack.push(element);
 
-    //sum += Integer.valueOf(String.valueOf(node.getLeft()));
+        while (!stack.isEmpty()) {
+            element = stack.pop();
+
+            sum += Integer.parseInt(String.valueOf(element));
+
+            if (element.getLeft() != null) {
+                stack.push(element.getLeft());
+            }
+
+            if (element.getRight() != null) {
+                stack.push(element.getRight());
+            }
+        }
+        System.out.println(sum);
+    }
 
     @Override
     public String toString() {
@@ -106,17 +103,3 @@ public class SubTree implements MySet {
     }
 }
 
-/*
-        if(left !=null)
-
-    {
-        sum += left.sumElements();
-    }
-        if(right !=null)
-
-    {
-        sum += right.sumElements();
-    }
-        return sum;
-}
-*/

@@ -17,7 +17,6 @@ public class Main {
         myTree.add(18);
         myTree.add(40);
         myTree.add(12);
-
         myTree.sumElements();
 
     }
